@@ -13,4 +13,5 @@ setup(
     description='The funniest joke in the world',
     long_description=readme(),
     author='Alex Dembo',
+    packages=['synatools'],
 )
