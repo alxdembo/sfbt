@@ -2,39 +2,38 @@ import json
 import os
 
 # post pull and pre commit
-import shutil
+from pathlib import Path
+
 from shutil import copy
 
 GIT_HOOKS_DIR = '.git/hooks/'
 HOOKS = ['pre-commit', 'post-receive']
+PARSED_SCRIPTS = './.parsed_scripts/'
+DIRECTORY = './sqlscript/'
 
 
 def parse():
-    print('parsing, lol')
-    return 1
-    directory = './sqlscript/'
-    for filename in os.listdir(directory):
+    Path(PARSED_SCRIPTS).mkdir(parents=True, exist_ok=True)
+    for filename in os.listdir(DIRECTORY):
         if filename.endswith(".json"):
-            print(os.path.join(directory, filename))
-            with open(os.path.join(directory, filename)) as f:
+            with open(os.path.join(DIRECTORY, filename)) as f:
                 contents = json.loads(f.read())
-                with open('./parsed_scripts/' + filename.replace('.json', '.sql'), 'w') as nf:
-                    nf.write(contents['properties']['content']['query'])
+            with open(PARSED_SCRIPTS + filename.replace('.json', '.sql'), 'w') as nf:
+                nf.write(contents['properties']['content']['query'])
 
 
 def serialise():
-    print('serialising lol')
+    for filename in os.listdir(DIRECTORY):
+        if filename.endswith(".json"):
+            with open(os.path.join(DIRECTORY, filename), 'r+') as f:
+                contents = json.loads(f.read())
+                with open(PARSED_SCRIPTS + filename.replace('.json', '.sql'), 'r') as nf:
+                    contents2 = nf.read()
 
-
-def print_help(q):
-    print('yolo', q)
-
-
-# todo this overwrites hooks
-def add_hooks():
-    for f in HOOKS:
-
-        copy(f, GIT_HOOKS_DIR + f)
+                if contents2 != contents['properties']['content']['query']:
+                    contents['properties']['content']['query'] = contents2
+                    f.seek(0)
+                    f.write(json.dumps(contents, indent='\t'))
 
 
 def remove_hooks():
