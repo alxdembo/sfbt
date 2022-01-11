@@ -1,6 +1,11 @@
 Synatools
 --------
 
+
+
+
+
+
 Makes work with Synapse SQL scripts more convenient:
 
 1) Allows editing SQL scripts in an actual IDE of choice
@@ -9,8 +14,13 @@ Makes work with Synapse SQL scripts more convenient:
 
 To use, navigate to the project repository and type::
 
-    pip install synatools
-    synatools add-hooks
+    python3 -m pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host github.com git+https://github.com/alxdembo/synatools
+
+bin/synatools file should be copied to /usr/local/bin/synatools
+
+    chmod +x /usr/local/bin/synatools
+
+
 
 This will do following:
 
