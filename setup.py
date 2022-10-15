@@ -9,7 +9,7 @@ def readme():
 setup(
     version='0.1',
     scripts=['bin/sfbt'],
-    url='https://github.com/alxdembo/synatools',
+    url='https://github.com/alxdembo/sfbt',
     description='Step function build tool',
     long_description=readme(),
     author='Alex Dembo',
