@@ -14,7 +14,7 @@ Makes work with Synapse SQL scripts more convenient:
 
 To use, navigate to the project repository and type::
 
-    python3 -m pip install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host github.com git+https://github.com/alxdembo/synatools
+    python3 -m pip install git+https://github.com/alxdembo/synatools
 
 bin/synatools file should be copied to /usr/local/bin/synatools
 
