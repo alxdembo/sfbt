@@ -1,0 +1,14 @@
+#!/usr/bin/env python3
+from sfbt.parser import parse
+import argparse
+
+
+FUNCTION_MAP = {
+    'parse': parse,
+}
+parser = argparse.ArgumentParser()
+parser.add_argument('command', choices=FUNCTION_MAP.keys())
+args = parser.parse_args()
+
+func = FUNCTION_MAP[args.command]
+func()

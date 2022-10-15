@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-import synatools
+import sfbt
 
 
 class TestJoke(TestCase):

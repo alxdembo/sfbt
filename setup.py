@@ -8,10 +8,11 @@ def readme():
 
 setup(
     version='0.1',
-    scripts=['bin/synatools'],
+    scripts=['bin/sfbt'],
     url='https://github.com/alxdembo/synatools',
-    description='The funniest joke in the world',
+    description='Step function build tool',
     long_description=readme(),
     author='Alex Dembo',
-    packages=['synatools'],
+    packages=['sfbt'],
+    install_requires=['dbt-core']
 )
