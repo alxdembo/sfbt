@@ -1,68 +1,42 @@
-{
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "model": {
-      "type": "object",
-      "properties": {
-        "pipeline1": {
-          "type": "object",
-          "properties": {
-            "event": {
-              "type": "string"
-            },
-            "compile_args": {
-              "type": "string"
-            },
-            "function_arn": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "event",
-            "compile_args",
-            "function_arn"
-          ]
-        }
-      },
-      "required": [
-        "pipeline1"
-      ]
-    },
-    "test": {
-      "type": "object",
-      "properties": {
-        "pipeline1": {
-          "type": "object",
-          "properties": {
-            "event": {
-              "type": "array",
-              "items": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "string"
-                }
-              ]
-            },
-            "function_arn": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "event",
-            "function_arn"
-          ]
-        }
-      },
-      "required": [
-        "pipeline1"
-      ]
-    }
-  },
-  "required": [
-    "model",
-    "test"
-  ]
-}
+$schema: 'http://json-schema.org/draft-04/schema#'
+type: object
+properties:
+  model:
+    type: object
+    properties:
+      pipeline1:
+        type: object
+        properties:
+          event:
+            type: string
+          compile_args:
+            type: string
+          function_arn:
+            type: string
+        required:
+          - event
+          - compile_args
+          - function_arn
+    required:
+      - pipeline1
+  test:
+    type: object
+    properties:
+      pipeline1:
+        type: object
+        properties:
+          event:
+            type: array
+            items:
+              - type: string
+              - type: string
+          function_arn:
+            type: string
+        required:
+          - event
+          - function_arn
+    required:
+      - pipeline1
+required:
+  - model
+  - test

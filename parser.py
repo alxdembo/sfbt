@@ -78,7 +78,7 @@ def yaml_load_validate(filename):
     with open(filename) as f:
         loaded = yaml.load(f, Loader=yaml.FullLoader)
 
-    with open('./schemas' + filename) as schema:
+    with open('./schemas/' + os.path.basename(filename)) as schema:
         validator = yaml.load(schema, Loader=yaml.FullLoader)
 
     validate(loaded, validator)
